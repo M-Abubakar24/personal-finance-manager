@@ -12,4 +12,11 @@ app.get("/", (req, res) => {
   });
 });
 
+// Routes
+app.use("/api/auth", require("./routes/authRoutes"));
+
 module.exports = app;
+app.use(
+  "/api/transactions",
+  require("./routes/transactionRoutes")
+);
