@@ -1,28 +1,14 @@
 const mongoose = require("mongoose");
 
-const transactionSchema = new mongoose.Schema(
+const budgetSchema = new mongoose.Schema(
   {
-    title: {
+    category: {
       type: String,
       required: true,
-      trim: true,
     },
     amount: {
       type: Number,
       required: true,
-    },
-    type: {
-      type: String,
-      enum: ["income", "expense"],
-      required: true,
-    },
-    category: {
-  type: String,
-  default: "General",
-},
-    date: {
-      type: Date,
-      default: Date.now,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -36,6 +22,6 @@ const transactionSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model(
-  "Transaction",
-  transactionSchema
+  "Budget",
+  budgetSchema
 );
