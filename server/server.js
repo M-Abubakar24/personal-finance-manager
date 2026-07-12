@@ -1,10 +1,16 @@
-const dotenv = require("dotenv");
-dotenv.config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-const connectDB = require("./src/config/db");
-connectDB();
+const app = express();
 
-const app = require("./src/app");
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/transactions", transactionRoutes);
+app.use("/api/budgets", budgetRoutes);
 
 const PORT = process.env.PORT || 5000;
 
